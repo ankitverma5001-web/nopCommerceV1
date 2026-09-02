@@ -16,9 +16,14 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install --with-deps firefox
     - name: Run Playwright tests
-      run: npx playwright test
+      # Scoped to SauceDemo specs only: these use public demo credentials
+      # (standard_user/secret_sauce) baked into the repo, unlike the
+      # RahulShettyAcademy specs which need a real personal account via
+      # RSA_USER_EMAIL/RSA_USER_PASSWORD secrets. Firefox only, since the
+      # chrome/msedge projects need those branded browser channels installed.
+      run: npx playwright test tests/APIScenarios.spec.js tests/Client.Nop.Spec.js --project=firefox
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

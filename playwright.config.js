@@ -9,7 +9,7 @@ module.exports = defineConfig({
     timeout: 20 * 1000,
   },
   use: {
-    headless: false,
+    headless: !!process.env.CI,
     trace: 'on',
     video: 'off',
     screenshot: 'only-on-failure',
