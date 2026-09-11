@@ -8,12 +8,10 @@ test('login practice website demo', async ({ browser }) => {
     const page = await context.newPage()
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
 
-
     const [newPage] = await Promise.all([
 
         context.waitForEvent('page')],
         page.locator(".blinkingText").first().click(),
-
 
     )
 
@@ -30,7 +28,7 @@ test('login practice website demo', async ({ browser }) => {
     await page.locator("select.form-control").selectOption("Consultant");
     await page.locator("#signInBtn").click();
     await page.locator("#terms").click();
-    await page.pause();
+   // await page.pause();
 
 
 });
@@ -48,13 +46,13 @@ test('demo page ', async ({ browser }) => {
     await page.locator("select.form-control").selectOption("Consultant");
     await page.locator("#signInBtn").click();
     await page.locator("#terms").click();
-    await page.pause();
+    //await page.pause();
 
 
 });
 
 
-test.only('network calls intercepting using route ', async ({ page }) => {
+test('network calls intercepting using route ', async ({ page }) => {
 
 
     // page.route('**/*.css', route => route.abort());
@@ -63,7 +61,7 @@ test.only('network calls intercepting using route ', async ({ page }) => {
     await page.goto("https://www.saucedemo.com/")
     await page.on('request', request => console.log(request.url()));
     await page.on('response', response => console.log(response.url(), response.status()));
-    await page.pause();
+   // await page.pause();
 
 
 });
